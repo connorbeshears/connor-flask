@@ -65,7 +65,7 @@ def add_book_form():
         author = request.form.get('author')
         published = request.form.get('published')
         now = datetime.datetime.now()
-        createdOn = now.strftime("%b %d, %Y at %H:%M")
+        createdOn = now.strftime("%b. %d, %Y at %H:%M")
 
         try:
             book = Book(
