@@ -10,9 +10,9 @@ db = SQLAlchemy(app)
 
 from models import Book
 
-@app.route('/')
-def hello():
-    return("Hello World")
+# @app.route('/')
+# def hello():
+#     return("Hello World")
 
 @app.route("/name/<name>")
 def get_book_name(name):
@@ -42,11 +42,11 @@ def add_book():
     except Exception as e:
         return(str(e))
 
-@app.route("/getall")
+@app.route("/")
 def get_all():
     try:
         books = Book.query.all()
-        return jsonify([e.serialize() for e in books])
+        return render_template("getall.html", books=books)
     except Exception as e:
         return(str(e))
 

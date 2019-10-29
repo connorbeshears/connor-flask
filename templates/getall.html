@@ -15,30 +15,24 @@
             <div class = "container">
                 <br>
                 <br>
-                <div class="row align-items-center justify-content-center">
-                    <h1>Add a book</h1>
+                <div>
+                    <h1>all books:</h1>
                 </div>
-                <br>
-
-                <form method="POST">
-                    <div class="form-row">
-                        <label for="name">Book Name</label>
-                        <input class="form-control" type="text" placeholder="Name o' Book" name="name" id="name">
-                    </div>
-                    <br>
-                    <div class="form-row">
-                        <label for="name">Author</label>
-                        <input class="form-control" type="text" placeholder="Author" name="author" id="author">
-                    </div>
-                    <br>
-                    <div class="form-row">
-                        <label for="name">Published</label>
-                        <input class="form-control" type="date" placeholder="Published" name="published" id="published">
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary" style="float:right">Submit</button>
-
-                </form>
+                {% block content %}
+                    {% for book in books %}
+                        <article class = "book">
+                            <header>
+                                <div>
+                                    <h1>{{book['name']}}</h1>
+                                    <h3>by {{ book['author'] }}, published on {{ book['published'] }}</h3>
+                                </div>
+                            </header>
+                        </article>
+                        {% if not loop.last %}
+                            <br>
+                        {% endif %}
+                    {% endfor %}
+                {% endblock %}
 
             </div>
         </div>
