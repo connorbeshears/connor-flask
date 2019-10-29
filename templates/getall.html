@@ -25,6 +25,7 @@
                                 <li class="list-group-item">
                                     <h1>{{book['name']}}</h1>
                                     <h3>by {{ book['author'] }}, published on {{ book['published'] }}</h3>
+                                    <p class="float-right">added on: {{ book['createdOn'] }}</p>
                                 </li>
                             {% endfor %}
                         {% endblock %}

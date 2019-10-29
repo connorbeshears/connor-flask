@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
-import os
+import os, datetime
 
 app = Flask(__name__)
 
@@ -64,12 +64,15 @@ def add_book_form():
         name = request.form.get('name')
         author = request.form.get('author')
         published = request.form.get('published')
+        now = datetime.datetime.now()
+        createdOn = now.strftime("%b %d, %Y at %H:%M")
 
         try:
             book = Book(
                 name=name,
                 author=author,
-                published=published
+                published=published,
+                createdOn = createdOn
             )
             db.session.add(book)
             db.session.commit()

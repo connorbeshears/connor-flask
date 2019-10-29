@@ -7,12 +7,14 @@ class Book(db.Model):
     name = db.Column(db.String())
     author = db.Column(db.String())
     published = db.Column(db.String())
+    createdOn = db.Column(db.String())
 
-    def __init__(self, name, author, published):
+    def __init__(self, name, author, published, createdOn):
         self.name = name
         self.author = author
         self.published = published
-    
+        self.createdOn = createdOn
+
     def __repr__(self):
         return('<id> {}'.format(self.id))
 
@@ -21,5 +23,6 @@ class Book(db.Model):
             'id': self.id,
             'name': self.name,
             'author': self.author,
-            'published': self.published
+            'published': self.published,
+            'createdOn': self.createdOn
         }
