@@ -26,6 +26,16 @@
                                     <h1>{{book['name']}}</h1>
                                     <h3>by {{ book['author'] }}, published on {{ book['published'] }}</h3>
                                     <p class="float-right">added on: {{ book['createdOn']}}</p>
+                                    <br>
+                                    <h4>Comments: </h4>
+                                        {% for comment in comments %}
+                                            {% if comment['bookId'] == book['id'] %}
+                                                <h6> {{ comment['content'] }} </h6>
+                                                <p class="float-right">by: {{comment['createdBy']}} on {{comment['createdOn']}} </p>
+                                                <br>
+                                            {% endif %}
+                                        {% endfor %}
+                                    <a href="/add/comment/{{book['id']}}" class = "btn btn-primary">Add comment</a>
                                 </li>
                             {% endfor %}
                         {% endblock %}

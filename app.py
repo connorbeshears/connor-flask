@@ -8,7 +8,7 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-from models import Book
+from models import Book, Comment
 
 # @app.route('/')
 # def hello():
@@ -46,7 +46,8 @@ def get_book_name(name):
 def get_all():
     try:
         books = Book.query.all()
-        return render_template("getall.html", books=books)
+        comments = Comment.query.all()
+        return render_template("getall.html", books=books, comments=comments)
     except Exception as e:
         return(str(e))
 
@@ -79,6 +80,30 @@ def add_book_form():
         except Exception as e:
             return(str(e))
     return render_template("addbook.html")
+
+@app.route('/add/comment/<id_>', methods=['GET', 'POST'])
+def addComment(id_):
+    if request.method == 'POST':
+        content = request.form.get('content')
+        createdBy = request.form.get('createdBy')
+        now = datetime.datetime.now()
+        createdOn = now.strftime("%b. %d, %Y at %I:%M %p")
+        bookId = id_
+    
+        try:
+            comment = Comment(
+                bookId = bookId,
+                content = content,
+                createdBy = createdBy,
+                createdOn = createdOn
+            )
+            db.session.add(comment)
+            db.session.commit()
+        except Exception as e:
+            return(str(e))
+    return(render_template('addcomment.html'))
+
+        
 
 if (__name__ == '__main__'):
     app.run()
