@@ -18,29 +18,29 @@ from models import Book
 def get_book_name(name):
     return("name : {}".format(name))
 
-@app.route("/details")
-def get_book_details():
-    author = request.args.get('author')
-    published = request.args.get('published')
-    return("Author : {}, Published: {}".format(author, published))
+# @app.route("/details")
+# def get_book_details():
+#     author = request.args.get('author')
+#     published = request.args.get('published')
+#     return("Author : {}, Published: {}".format(author, published))
 
-@app.route("/add")
-def add_book():
-    name = request.args.get('name')
-    author = request.args.get('author')
-    published = request.args.get('published')
+# @app.route("/add")
+# def add_book():
+#     name = request.args.get('name')
+#     author = request.args.get('author')
+#     published = request.args.get('published')
 
-    try:
-        book = Book(
-            name=name,
-            author=author,
-            published=published
-        )
-        db.session.add(book)
-        db.session.commit()
-        return("Book added. book id = {}".format(book.id))
-    except Exception as e:
-        return(str(e))
+#     try:
+#         book = Book(
+#             name=name,
+#             author=author,
+#             published=published
+#         )
+#         db.session.add(book)
+#         db.session.commit()
+#         return("Book added. book id = {}".format(book.id))
+#     except Exception as e:
+#         return(str(e))
 
 @app.route("/")
 def get_all():
