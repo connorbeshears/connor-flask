@@ -1,5 +1,24 @@
 from app import db
 
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(25), unique=True)
+    passw = db.Column(db.String())
+
+    def __init__(self, username, passw):
+        self.username = username
+        self.passw = passw
+    
+    def __repr__(self):
+        return('<id> {}'.format(self.id))
+    
+    def serialize(self):
+        return({
+            'id': self.id,
+            'username': self.username
+        })
+
 class Book(db.Model):
     __tablename__ = 'books'
 
