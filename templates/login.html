@@ -26,17 +26,17 @@
                 <form method="POST">
                     <div class="form-row">
                         <label for="name">Username</label>
-                        <input class="form-control" type="text" placeholder="Username" name="username" id="username" required maxlength="25">
+                        <input class="form-control" type="text" placeholder="Username" name="username" id="username" required maxlength="25" minlength="6">
                     </div>
                     <br>
                     <div class="form-row">
                         <label for="name">Password</label>
-                        <input class="form-control" type="password" placeholder="My name" name="password" id="password" required maxlength="30">
+                        <input class="form-control" type="password" placeholder="My name" name="password" id="password" required maxlength="30" minlength="6">
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary" style="float:right">Login</button>
                     <a href="/register" class="btn btn-primary" style="float: left; padding: 5px;">Register</a>
-                    <a href="/" class="btn btn-secondary" style="float:left">Return</a>
+                    <a href="/" class="btn btn-secondary" style="float:left; padding: 5px;">Return</a>
 
 
                 </form>

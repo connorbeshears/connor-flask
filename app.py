@@ -87,7 +87,7 @@ def get_by_id(id_):
 def add_book_form():
     if request.method == 'POST':
         name = request.form.get('name')
-        author = request.form.get('author')
+        author = session.get('username')
         published = request.form.get('published')
         now = datetime.datetime.now()
         createdOn = now.strftime("%b. %d, %Y at %I:%M %p")
